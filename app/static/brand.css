@@ -1,0 +1,180 @@
+/* DYMO Label Studio: accent blue #1B9CE0, ink #16202A, paper #F6F4EF. */
+
+@font-face{font-family:"Bricolage Grotesque";font-weight:200 800;font-stretch:75% 100%;font-display:swap;src:url("../webfont/bricolage") format("truetype")}
+@font-face{font-family:Roboto;font-weight:400;font-display:swap;src:url("../webfont/roboto-400") format("truetype")}
+@font-face{font-family:Roboto;font-weight:500;font-display:swap;src:url("../webfont/roboto-500") format("truetype")}
+@font-face{font-family:Roboto;font-weight:700;font-display:swap;src:url("../webfont/roboto-700") format("truetype")}
+
+:root{
+  --accent:#1B9CE0;--accent-strong:#1587C4;--on-accent:#fff;--accent-soft:rgba(27,156,224,.13);
+  --ink:#16202A;--ink-2:#5B6570;--ink-3:#8C949C;
+  --paper:#F6F4EF;--card:#FFFFFF;--field:#EFECE5;--field-hover:#E8E4DB;--peel:#D9D5CC;
+  --line:rgba(22,32,42,.12);--line-strong:rgba(22,32,42,.28);
+  --error:#D64545;
+  --shadow:0 1px 0 rgba(22,32,42,.04),0 10px 30px -16px rgba(22,32,42,.28);
+  --display:"Bricolage Grotesque",Roboto,system-ui,sans-serif;
+  --body:Roboto,system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --accent:#3AAEEA;--accent-strong:#62BFEF;--on-accent:#0B1117;--accent-soft:rgba(58,174,234,.16);
+    --ink:#F6F4EF;--ink-2:#A9B1B8;--ink-3:#77818A;
+    --paper:#0E151C;--card:#16202A;--field:#1F2B37;--field-hover:#253342;--peel:#3A4653;
+    --line:rgba(246,244,239,.11);--line-strong:rgba(246,244,239,.3);
+    --error:#F07171;
+    --shadow:0 1px 0 rgba(0,0,0,.2),0 12px 32px -16px rgba(0,0,0,.6);
+    color-scheme:dark;
+  }
+}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{min-height:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 14px/1.45 var(--body);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+.mdi{font-family:mdi;font-style:normal;font-weight:normal;line-height:1;display:inline-block}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px}
+h1,h2,.display{font-family:var(--display)}
+
+/* Header with the wordmark: mark, a pill and the name, like the brand logo */
+.toolbar{display:flex;align-items:center;gap:8px;height:68px;padding:0 12px 0 20px;position:sticky;top:0;z-index:3;
+  background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.wordmark{display:flex;align-items:center;gap:10px;flex:1;min-width:0;color:var(--ink);text-decoration:none}
+.wordmark .mark{width:46px;height:32px;flex:none}
+.wordmark .words{display:flex;align-items:center;gap:8px;font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:-.02em;line-height:1;white-space:nowrap}
+.badge{font-family:var(--display);font-weight:700;font-size:11px;letter-spacing:.06em;background:var(--ink);color:var(--paper);border-radius:999px;padding:4px 8px 3px}
+.icon-button{width:44px;height:44px;border:0;border-radius:50%;background:none;color:var(--ink-2);cursor:pointer;display:grid;place-items:center;font-size:24px}
+.icon-button:hover{background:var(--field);color:var(--ink)}
+@media (max-width:520px){.wordmark .words .name{display:none}}
+
+/* Page layout */
+.page{max-width:1200px;margin:0 auto;padding:20px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;align-items:start}
+.column{display:flex;flex-direction:column;gap:20px;min-width:0}
+.sticky{position:sticky;top:88px}
+@media (max-width:900px){.page{grid-template-columns:1fr;padding:12px}.sticky{position:static;order:-1}}
+
+/* Cards */
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}
+.card-header{font-family:var(--display);font-weight:700;font-size:22px;letter-spacing:-.015em;padding:18px 20px 10px}
+.card-content{padding:0 20px 20px}
+.card-actions{display:flex;justify-content:flex-end;align-items:center;gap:8px;padding:12px 16px;border-top:1px solid var(--line)}
+.section{margin-top:20px;padding-top:18px;border-top:1px dashed var(--line-strong)}
+.subheader{font-family:var(--display);font-size:15px;font-weight:700;margin:0 0 12px;display:flex;align-items:center;justify-content:space-between}
+
+/* Fields: a label inside a soft, rounded box */
+.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin-top:12px}
+.field{position:relative;display:block;background:var(--field);border:1.5px solid transparent;border-radius:12px;transition:border-color .15s,background .15s}
+.field:hover{background:var(--field-hover)}
+.field:focus-within{border-color:var(--accent);background:var(--card);box-shadow:0 0 0 4px var(--accent-soft)}
+.field>.label{position:absolute;left:14px;top:8px;font-size:12px;line-height:16px;color:var(--ink-2);pointer-events:none;white-space:nowrap}
+.field:focus-within>.label{color:var(--accent-strong)}
+.field input,.field select,.field textarea{display:block;width:100%;border:0;outline:0;background:transparent;color:var(--ink);font:inherit;font-size:16px;padding:26px 14px 9px;min-height:56px;appearance:none;-webkit-appearance:none}
+.field textarea{resize:vertical;min-height:112px;line-height:1.4}
+.field select{padding-right:40px;cursor:pointer;text-overflow:ellipsis}
+.field select option{background:var(--card);color:var(--ink)}
+.field.select::after{content:"\F0140";font-family:mdi;position:absolute;right:12px;top:17px;font-size:22px;color:var(--ink-2);pointer-events:none}
+.field input::placeholder,.field textarea::placeholder{color:var(--ink-3)}
+@media (prefers-color-scheme:dark){.field input[type=date]::-webkit-calendar-picker-indicator{filter:invert(1)}}
+
+/* Sliders */
+.slider{display:block}
+.slider .top{display:flex;justify-content:space-between;color:var(--ink-2)}
+.slider output{color:var(--ink);font-variant-numeric:tabular-nums;font-weight:500}
+.slider input{width:100%;margin:4px 0 0;accent-color:var(--accent);height:28px;cursor:pointer}
+
+/* Buttons */
+.button{font-family:var(--display);font-weight:600;font-size:15px;border:1.5px solid var(--line-strong);border-radius:999px;height:40px;
+  padding:0 18px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;background:var(--card);color:var(--ink);transition:background .15s,border-color .15s}
+.button:hover{border-color:var(--ink);background:var(--field)}
+.button.filled{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.button.filled:hover{background:var(--accent-strong);border-color:var(--accent-strong)}
+.button.danger{color:var(--error);border-color:color-mix(in srgb,var(--error) 45%,transparent)}
+.button:disabled{opacity:.6;cursor:default}
+.button .mdi{font-size:18px}
+.link{font:inherit;font-size:13px;border:0;background:none;padding:0;color:var(--accent-strong);cursor:pointer;display:inline-flex;align-items:center;gap:4px}
+.link:hover{text-decoration:underline}
+
+/* Expandable panels */
+details.expand{border:1px solid var(--line);border-radius:14px;margin-top:20px;background:color-mix(in srgb,var(--field) 45%,transparent)}
+details.expand>summary{list-style:none;display:flex;align-items:center;justify-content:space-between;min-height:48px;padding:0 12px 0 16px;cursor:pointer;font-family:var(--display);font-weight:700;user-select:none}
+details.expand>summary::-webkit-details-marker{display:none}
+details.expand>summary::after{content:"\F0140";font-family:mdi;font-weight:normal;font-size:24px;color:var(--ink-2);transition:transform .15s}
+details.expand[open]>summary::after{transform:rotate(180deg)}
+details.expand>.panel{padding:0 16px 16px}
+details.hint-panel{margin-top:8px}
+details.hint-panel>summary{list-style:none;display:inline-flex}
+details.hint-panel>summary::-webkit-details-marker{display:none}
+details.hint-panel>.panel{margin-top:8px;padding:12px 16px;border-radius:12px;background:var(--field);color:var(--ink-2);font-size:13px}
+.panel p{margin:0 0 8px}
+.examples{display:flex;flex-direction:column;gap:6px}
+.example{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;text-align:left;font:inherit;font-size:13px;color:var(--ink-2);background:none;border:0;padding:0;cursor:pointer}
+.example code{color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:8px;padding:2px 6px}
+.example:hover code{border-color:var(--accent)}
+
+/* Image choice and icon picker */
+.segmented{display:inline-flex;background:var(--field);border-radius:999px;padding:3px;gap:2px}
+.segmented button{font-family:var(--display);font-weight:600;font-size:14px;border:0;border-radius:999px;background:none;color:var(--ink-2);height:34px;padding:0 14px;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.segmented button:hover{color:var(--ink)}
+.segmented button.active{background:var(--card);color:var(--ink);box-shadow:0 1px 3px rgba(22,32,42,.18)}
+.segmented .mdi{font-size:18px}
+.icon-search{display:flex;align-items:center;gap:12px}
+.icon-current{width:56px;height:56px;flex:none;border-radius:14px;border:1.5px dashed var(--line-strong);display:grid;place-items:center;font-size:32px;color:var(--ink)}
+.icon-current.set{border:2px solid var(--accent);background:var(--accent-soft)}
+.icon-search .field{flex:1}
+.icon-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(44px,1fr));gap:4px;margin-top:12px;max-height:196px;overflow-y:auto;padding:2px}
+.icon-tile{height:44px;border:1.5px solid transparent;border-radius:12px;background:none;color:var(--ink);cursor:pointer;font-size:24px;display:grid;place-items:center;padding:0}
+.icon-tile:hover{background:var(--field)}
+.icon-tile.selected{border-color:var(--accent);background:var(--accent-soft);color:var(--accent-strong)}
+
+/* Preview: the label on its blue liner, like the brand illustration */
+.stage{position:relative;background:var(--accent);border-radius:16px;padding:28px 20px;display:grid;place-items:center;min-height:210px;overflow:hidden}
+.stage::before{content:"";position:absolute;inset:12px;border:2px dashed rgba(255,255,255,.35);border-radius:10px;pointer-events:none}
+.stage img{position:relative;display:block;max-width:100%;max-height:320px;background:#fff;border-radius:8px;box-shadow:0 2px 0 rgba(0,0,0,.08),0 14px 28px -10px rgba(0,0,0,.45);image-rendering:pixelated}
+.preview-error{color:var(--error);font-size:13px;text-align:center;margin:10px 0 0;min-height:18px}
+.hint{color:var(--ink-2);font-size:13px;margin:8px 0 0}
+
+/* Templates */
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:inline-flex;align-items:center;height:34px;border-radius:999px;border:1.5px solid var(--line-strong);background:var(--card);overflow:hidden}
+.chip button{font-family:var(--display);font-weight:600;border:0;background:none;color:var(--ink);height:100%;padding:0 14px;cursor:pointer}
+.chip button:hover{background:var(--accent-soft)}
+.chip .remove{padding:0 10px 0 2px;color:var(--ink-3);font-family:mdi;font-weight:normal;font-size:16px}
+.empty{color:var(--ink-2);font-size:13px}
+
+/* Dialogs: always solid */
+dialog{border:0;border-radius:22px;padding:0;width:min(540px,calc(100% - 32px));max-height:calc(100% - 32px);background:var(--card);color:var(--ink);box-shadow:0 30px 80px -20px rgba(0,0,0,.45)}
+dialog::backdrop{background:rgba(14,21,28,.5)}
+dialog form{padding:24px 24px 8px}
+dialog h2{margin:0 0 16px;font-size:26px;font-weight:800;letter-spacing:-.02em;line-height:1.15}
+dialog .subheader{margin-top:26px}
+.dialog-actions{display:flex;justify-content:flex-end;gap:8px;margin:24px -24px 0;padding:12px 24px 16px;position:sticky;bottom:0;background:var(--card);border-top:1px solid var(--line)}
+.check{display:flex;gap:12px;align-items:center;margin-top:16px;cursor:pointer}
+.check input,.label-row input{width:18px;height:18px;margin:0;accent-color:var(--accent);flex:none}
+.check.disabled{opacity:.5;cursor:default}
+.label-list{margin-top:8px;max-height:260px;overflow-y:auto;border:1px solid var(--line);border-radius:12px}
+.label-item{border-bottom:1px solid var(--line)}
+.label-item:last-child{border-bottom:0}
+.label-row{display:flex;gap:12px;align-items:center;padding:10px 12px;cursor:pointer}
+.label-row:hover{background:var(--accent-soft)}
+.label-row .size{margin-left:auto;color:var(--ink-2);font-size:13px;white-space:nowrap}
+.offsets{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;padding:0 12px 12px 42px;color:var(--ink-2);font-size:13px}
+.offsets label{display:inline-flex;align-items:center;gap:6px}
+.offsets input{width:72px;font:inherit;font-size:14px;color:var(--ink);background:var(--field);border:1.5px solid transparent;border-radius:8px;padding:5px 8px;text-align:right}
+.offsets input:focus{outline:0;border-color:var(--accent)}
+.status-line{display:flex;align-items:center;gap:8px}
+.status-line .dot{width:8px;height:8px;border-radius:50%;background:var(--ink-3);flex:none}
+.status-line .dot.on{background:#2FB36B}
+
+/* Toast */
+.toast{position:fixed;left:50%;bottom:20px;transform:translate(-50%,calc(100% + 40px));background:var(--ink);color:var(--paper);
+  padding:13px 18px;border-radius:14px;box-shadow:0 12px 30px -10px rgba(0,0,0,.4);transition:transform .2s;max-width:calc(100% - 32px);z-index:10;font-weight:500}
+.toast.show{transform:translate(-50%,0)}
+.toast.error{background:var(--error);color:#fff}
+
+/* Sign-in page */
+.login{min-height:100vh;display:grid;place-items:center;padding:20px}
+.login .card{width:min(400px,100%);padding:28px}
+.login .wordmark{justify-content:center;margin-bottom:22px;flex:none}
+.login h1{font-size:24px;font-weight:800;letter-spacing:-.02em;margin:0 0 6px}
+.login .button{width:100%;justify-content:center;margin-top:16px}
+.login .error{color:var(--error);font-size:13px;margin:10px 0 0}

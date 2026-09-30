@@ -1,0 +1,28 @@
+services:
+  dymo-label-studio:
+    image: ghcr.io/madeby0203/dymo-label-studio:latest
+    container_name: dymo-label-studio
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    devices:
+      # The LabelWriter. The container only starts while the printer is connected.
+      - /dev/usb/lp0:/dev/usb/lp0
+    volumes:
+      # Settings, templates and the password.
+      - ./data:/data
+    environment:
+      TZ: Europe/Amsterdam
+      # Print buttons in Home Assistant, through MQTT discovery:
+      # MQTT_HOST: 192.168.1.10
+      # MQTT_PORT: 1883
+      # MQTT_USERNAME: labels
+      # MQTT_PASSWORD: secret
+      # Home Assistant templates in labels (a long-lived access token from your HA profile):
+      # HA_URL: http://homeassistant.local:8123
+      # HA_TOKEN: eyJhbGciOi...
+      # Forgot the web password? Set this once, restart, then remove it again:
+      # RESET_PASSWORD: "true"
+    # To share the printer on your network with Bonjour/AirPrint discovery, use the host
+    # network instead of "ports" (the web interface is then on port 8080 of the host):
+    # network_mode: host

@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sign in · DYMO Label Studio</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="static/brand.css">
+</head>
+<body>
+<main class="login">
+  <form class="card" method="post" action="login">
+    {% include "_wordmark.html" %}
+    <h1>Sign in</h1>
+    <p class="hint" style="margin:0 0 16px">This label printer is protected with a password.</p>
+    <label class="field"><span class="label">Password</span><input name="password" type="password" autocomplete="current-password" required autofocus></label>
+    {% if error %}<p class="error" role="alert">{{ error }}</p>{% endif %}
+    <button class="button filled" type="submit">Sign in</button>
+  </form>
+</main>
+</body>
+</html>
