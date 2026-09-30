@@ -2,13 +2,13 @@
   <img src="app/static/icon.svg" alt="" width="96">
 </p>
 
-<h1 align="center">DYMO Label Studio</h1>
+<h1 align="center">Label Studio for DYMO</h1>
 
 <p align="center">
   Design and print labels on a USB DYMO LabelWriter from your browser. Runs as a Docker container.
 </p>
 
-DYMO Label Studio turns a LabelWriter on your home server into a label printer for the whole house. Design labels in the browser with a live preview, save them as templates, and print them from any device on your network, from a script, or over MQTT.
+Label Studio for DYMO turns a LabelWriter on your home server into a label printer for the whole house. Design labels in the browser with a live preview, save them as templates, and print them from any device on your network, from a script, or over MQTT.
 
 ## Features
 

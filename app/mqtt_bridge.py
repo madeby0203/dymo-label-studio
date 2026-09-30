@@ -47,8 +47,8 @@ class MqttBridge:
         self.button_prefix = f"{self.object_prefix}_template_"
         self.device = {
             "identifiers": [self.object_prefix],
-            "name": "DYMO Label Studio",
-            "manufacturer": "DYMO Label Studio",
+            "name": "Label Studio for DYMO",
+            "manufacturer": "Label Studio for DYMO",
             "model": "DYMO LabelWriter",
         }
         self.connected = False

@@ -205,7 +205,7 @@ def create_queue(device: str, favorites: list[str], default: str) -> dict:
         "-v", f"dymo:{device}",
         "-m", driver,
         "-D", QUEUE_DESCRIPTION,
-        "-L", "DYMO Label Studio",
+        "-L", "Label Studio for DYMO",
         "-o", "printer-is-shared=true",
         "-o", "printer-error-policy=retry-job",
     )

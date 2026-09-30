@@ -19,7 +19,7 @@ OK, FAILED, RETRY = 0, 1, 6
 def main() -> int:
     if len(sys.argv) == 1:
         # Device discovery by lpinfo: nothing to discover, the URI is set explicitly.
-        print('direct dymo "Unknown" "DYMO LabelWriter (DYMO Label Studio)"')
+        print('direct dymo "Unknown" "DYMO LabelWriter (Label Studio for DYMO)"')
         return OK
     if len(sys.argv) not in (6, 7):
         print("Usage: dymo job-id user title copies options [file]", file=sys.stderr)

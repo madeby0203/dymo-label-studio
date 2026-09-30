@@ -1,4 +1,4 @@
-"""DYMO Label Studio: the web app, printing, MQTT buttons and the optional network printer."""
+"""Label Studio for DYMO: the web app, printing, MQTT buttons and the optional network printer."""
 
 from __future__ import annotations
 

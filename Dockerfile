@@ -44,7 +44,7 @@ ENTRYPOINT ["/usr/bin/tini", "--"]
 CMD ["python3", "/app/app.py"]
 
 LABEL \
-    org.opencontainers.image.title="DYMO Label Studio" \
+    org.opencontainers.image.title="Label Studio for DYMO" \
     org.opencontainers.image.description="Design and print labels on a USB DYMO LabelWriter, with Home Assistant integration" \
     org.opencontainers.image.source="https://github.com/madeby0203/dymo-label-studio" \
     org.opencontainers.image.licenses="MIT"

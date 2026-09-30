@@ -1,4 +1,4 @@
-/* DYMO Label Studio: accent blue #1B9CE0, ink #16202A, paper #F6F4EF. */
+/* Label Studio for DYMO: accent blue #1B9CE0, ink #16202A, paper #F6F4EF. */
 
 @font-face{font-family:"Bricolage Grotesque";font-weight:200 800;font-stretch:75% 100%;font-display:swap;src:url("../webfont/bricolage") format("truetype")}
 @font-face{font-family:Roboto;font-weight:400;font-display:swap;src:url("../webfont/roboto-400") format("truetype")}
@@ -45,7 +45,7 @@ h1,h2,.display{font-family:var(--display)}
 .badge{font-family:var(--display);font-weight:700;font-size:11px;letter-spacing:.06em;background:var(--ink);color:var(--paper);border-radius:999px;padding:4px 8px 3px}
 .icon-button{width:44px;height:44px;border:0;border-radius:50%;background:none;color:var(--ink-2);cursor:pointer;display:grid;place-items:center;font-size:24px}
 .icon-button:hover{background:var(--field);color:var(--ink)}
-@media (max-width:520px){.wordmark .words .name{display:none}}
+@media (max-width:420px){.wordmark .words .badge{display:none}}
 
 /* Page layout */
 .page{max-width:1200px;margin:0 auto;padding:20px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;align-items:start}
